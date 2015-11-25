@@ -1,0 +1,17 @@
+/* Empty. Add your own CSS if you like */
+.error {
+  color: red;
+  margin-right: 20px;
+}
+
+.error-text {
+  color: red;
+  float: right;
+  font-size: xx-small;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.none-direct {
+  text-decoration: none;
+}
