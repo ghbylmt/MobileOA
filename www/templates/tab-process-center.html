@@ -1,5 +1,11 @@
 <ion-view view-title="审批中心">
   <ion-content>
-    <h1>bbbbbb</h1>
+    <ion-refresher
+      pulling-text="继续下拉刷新"
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item ng-repeat="item in items"></ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
