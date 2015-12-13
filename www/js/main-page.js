@@ -78,6 +78,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             controller: 'Setting'
           }
         }
+      })
+      .state('tab.notices_list', {
+        url: '/notices_list',
+        views: {
+          'home-tab': {
+            templateUrl: 'notice-list.html',
+            controller: 'NoticesList'
+          }
+        }
+      })
+      .state('tab.notice_detial', {
+        url: '/notices_list/:noticesCid',
+        views: {
+          'home-tab': {
+            templateUrl: 'notice-detial.html',
+            controller: 'NoticeDetials'
+          }
+        }
+      })
+      .state('tab.addressbook', {
+        url: '/notices_list/:noticesCid',
+        views: {
+          'home-tab': {
+            templateUrl: 'address-book.html',
+            controller: 'AddressBook'
+          }
+        }
       });
 
     $urlRouterProvider.otherwise('/tab/home_page');
