@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
     $scope.doRefresh = function () {
       $timeout(function () {
         $scope.$broadcast('scroll.refreshComplete');
-      }, 1);
+      }, 2);
     }
     $scope.todo_list_click = function () {
       console.log('aa', 'aaa');
@@ -27,7 +27,13 @@ angular.module('starter.controllers', [])
       $state.go('tab.notices_list');
     }
     $scope.address_book_click = function () {
-      $state.go('tab.addressbook');
+      $state.go('tab.addressbook', {departmentid: '19006537-c167-4c16-9c19-a2b600e19a79', context: 'addressbook'});
+      /*  var options = {
+       location: 'yes',
+       clearcache: 'yes',
+       toolbar: 'no'
+       };
+       $cordovaInAppBrowser.open('http://www.baidu.com', '_blank', options)*/
     }
   })
 
@@ -75,11 +81,45 @@ angular.module('starter.controllers', [])
 
   })
   //通讯录的Controller
-  .controller('AddressBook', function ($scope) {
-    console.log('addressbook', 'enter');
-    /*  $scope.hasUserIn = true;//默认有人员
-     $scope.hasDepartmentIn = true;//默认有部门
-     $scope.departmentName = "华盛江泉集团有限公司";*/
-    window.open('http://www.baidu.com', '_system', 'location=yes');
+  .controller('AddressBook', function ($scope, $stateParams, $http, DepartmentList, UserList) {
+    $scope.hasUserIn = true;//默认有人员
+    $scope.hasDepartmentIn = true;//默认有部门
+    $scope.departmentName = "华盛江泉集团有限公司";
+    var departmentid = $stateParams.departmentid;
+    var listItems = [];
+    var type = 'department';
+    if (departmentid == '19006537-c167-4c16-9c19-a2b600e19a79') {
+      type = 'initial'
+    }
+    $scope.listDepartment = new Array();
+    DepartmentList.get(departmentid, type).then(function (response) {
+      console.log('response', response);
+      if (response == null) {
+        $scope.hasDepartmentIn = false;
+      }
+      $scope.listDepartment = response;
+    });
+    UserList.get(departmentid).then(function (response) {
+      $scope.listUserList = response;
+      if (response == null) {
+        $scope.hasUserIn = false;
+      } else
+        $scope.departmentName = response[0].item2;
+    });
+    // window.open('http://www.baidu.com', '_self', 'location=no');
   })
-;
+  .controller('ProfilePage', function ($scope, $http, $stateParams, UserInfo) {
+    var usercid = $stateParams.usercid;
+
+    UserInfo.get(usercid).then(
+      function (response) {
+        var userInfo = response[0];
+        $scope.userName = userInfo.item1;
+        $scope.userPhone = userInfo.item2;
+        $scope.jobName = userInfo.item5;
+        $scope.employeeId = userInfo.item4;
+        $scope.emailAddress = userInfo.item3;
+        $scope.departmentName = userInfo.item6;
+        $scope.userCode = userInfo.item7;
+      });
+  });

@@ -98,14 +98,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       })
       .state('tab.addressbook', {
-        url: '/notices_list/:noticesCid',
+        url: '/addressbook/:departmentid',
         views: {
           'home-tab': {
             templateUrl: 'address-book.html',
             controller: 'AddressBook'
           }
         }
-      });
+      })
+      .state('tab.profilepage', {
+        url: '/profilepage/:usercid',
+        views: {
+          'home-tab': {
+            templateUrl: 'profile-page.html',
+            controller: 'ProfilePage'
+          }
+        }
+      })
+    ;
 
     $urlRouterProvider.otherwise('/tab/home_page');
 
