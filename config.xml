@@ -3,10 +3,10 @@
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>掌上江泉</name>
   <description>
-    An Ionic Framework and Cordova project.
+    掌上江泉移动办公平台
   </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-    Ionic Framework Team
+  <author email="liumt@hsjq.com" href="http://hsjq.com">
+    集团信息中心
   </author>
   <content src="index.html"/>
   <access origin="*"/>

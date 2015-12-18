@@ -10,7 +10,7 @@ angular.module('starter.services', [])
     var notices = '';
     return {
       all: function (usercode, search, pagenum) {
-        var url = "http://192.168.90.47:8080/Notice/NoitceHandler.ashx?ajaxMethod=getnotices&usercode=" + usercode + "&pagenum=" + pagenum + "&search=" + encodeURI(encodeURI(search));
+        var url = "http://test.hsjq.com/AndroidServer/Notice/NoitceHandler.ashx?ajaxMethod=getnotices&usercode=" + usercode + "&pagenum=" + pagenum + "&search=" + encodeURI(encodeURI(search));
         console.log('aaa', url)
         return $http.get(url).then(function (response) {
           var noticesTemp = response.data.messageContent;
@@ -41,7 +41,7 @@ angular.module('starter.services', [])
     var noticeDetial = '';
     return {
       get: function (noticeCid) {
-        return $http.get("http://192.168.90.47:8080/Notice/NoitceHandler.ashx?ajaxMethod=getnoticedetial&cid=" + noticeCid).then(
+        return $http.get("http://test.hsjq.com/AndroidServer/Notice/NoitceHandler.ashx?ajaxMethod=getnoticedetial&cid=" + noticeCid).then(
           function (response) {
             noticeDetial = response.data.messageContent;
             return noticeDetial;
@@ -57,7 +57,7 @@ angular.module('starter.services', [])
     var list = [];
     return {
       get: function (dptCid, type) {
-        var url = "http://192.168.90.47:8080/AddressBook/AddressBookHandler.ashx?ajaxMethod=getDepartment&type=" + type + "&cid=" + dptCid;
+        var url = "http://test.hsjq.com/AndroidServer/AddressBook/AddressBookHandler.ashx?ajaxMethod=getDepartment&type=" + type + "&cid=" + dptCid;
         return $http.get(url).then(
           function (response) {
             list = response.data.messageContent;
@@ -73,7 +73,7 @@ angular.module('starter.services', [])
     var list = [];
     return {
       get: function (dptCid) {
-        var url = "http://192.168.90.47:8080/AddressBook/AddressBookHandler.ashx?ajaxMethod=getUsers&cid=" + dptCid;
+        var url = "http://test.hsjq.com/AndroidServer/AddressBook/AddressBookHandler.ashx?ajaxMethod=getUsers&cid=" + dptCid;
         return $http.get(url).then(
           function (response) {
             list = response.data.messageContent;
@@ -89,7 +89,7 @@ angular.module('starter.services', [])
     var list = [];
     return {
       get: function (usercid) {
-        var url = "http://192.168.90.47:8080/AddressBook/AddressBookHandler.ashx?ajaxMethod=getUserInfo&type=person&cid=" + usercid;
+        var url = "http://test.hsjq.com/AndroidServer/AddressBook/AddressBookHandler.ashx?ajaxMethod=getUserInfo&type=person&cid=" + usercid;
         return $http.get(url).then(
           function (respone) {
             list = respone.data.messageContent;
