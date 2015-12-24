@@ -31,6 +31,7 @@
   /*菜单图标的大小*/
   width: 64px;
   height: 64px;
+  border-radius: 25%;
 }
 
 .lmt-menu-div {
@@ -62,4 +63,14 @@
 /*设置页面*/
 .lmt-setting-div {
   text-align: center;
+}
+
+.lmt-div-processcenter {
+  border: 2px solid #ffffff;
+  background-color: #1E90FF;
+  height: 60px;
+  color: whitesmoke;
+  line-height: 40px;
+  font-size: large;
+  overflow: hidden;
 }

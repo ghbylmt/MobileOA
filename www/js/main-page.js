@@ -115,6 +115,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
         }
       })
+      .state('tab.outworkingregister', {
+        url: '/outworkingregister',
+        views: {
+          'home-tab': {
+            templateUrl: 'outworkingregister.html',
+            controller: 'OutWorkingRegister'
+          }
+        }
+      })
+      .state('tab.processstart', {
+        url: '/processstart',
+        views: {
+          'process-center-tab': {
+            templateUrl: 'process-start.html',
+            controller: 'ProcessStart'
+          }
+        }
+      })
+      .state('tab.processtodo', {
+        url: '/processtodo',
+        views: {
+          'process-center-tab': {
+            templateUrl: 'process-todo.html',
+            controller: 'ProcessToDo'
+          }
+        }
+      })
     ;
 
     $urlRouterProvider.otherwise('/tab/home_page');

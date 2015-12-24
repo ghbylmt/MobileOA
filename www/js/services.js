@@ -7,7 +7,7 @@ angular.module('starter.services', [])
    * 更具人员的CID获取人员所能够阅读的通知公告的列表
    */
   .factory('Notices', function ($http) {
-    var notices = '';
+    var notices = [];
     return {
       all: function (usercode, search, pagenum) {
         var url = "http://test.hsjq.com/AndroidServer/Notice/NoitceHandler.ashx?ajaxMethod=getnotices&usercode=" + usercode + "&pagenum=" + pagenum + "&search=" + encodeURI(encodeURI(search));
@@ -21,7 +21,7 @@ angular.module('starter.services', [])
               notices = notices.concat(noticesTemp);
             }
           }
-          return notices;
+          return noticesTemp;
         });
       },
       get: function (noticesCid) {
@@ -91,8 +91,22 @@ angular.module('starter.services', [])
       get: function (usercid) {
         var url = "http://test.hsjq.com/AndroidServer/AddressBook/AddressBookHandler.ashx?ajaxMethod=getUserInfo&type=person&cid=" + usercid;
         return $http.get(url).then(
-          function (respone) {
-            list = respone.data.messageContent;
+          function (response) {
+            list = response.data.messageContent;
+            return list;
+          }
+        )
+      }
+    }
+  })
+  .factory('Processes', function ($http) {
+    var list = [];
+    return {
+      get: function (usercode) {
+        var url = "http://test.hsjq.com/AndroidServer/ProcessCenter/ProcessStartHandler.ashx?usercode=" + usercode + "&ajaxMehtod=getprocesslist";
+        return $http.get(url).then(
+          function (response) {
+            list = response.data.messageContent;
             return list;
           }
         )

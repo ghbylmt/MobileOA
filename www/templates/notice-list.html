@@ -14,13 +14,14 @@
         <h2>{{notice.item1}}</h2>
         <h6 class="text-right">发布时间：{{notice.item2}}</h6>
       </a>
+      <a class="item text-center" ng-click="loadMoreClick();">{{hasMoreNotice}}</a>
     </ion-list>
-    <ion-infinite-scroll
-      on-infinite="getMoreNotices()"
-      ng-if='hasmornotices'
-      icon="ion-loading-c"
-      spinner="ios"
-      pulling-text="Pull to refresh"
-      distance="20%">
-  </ion-content>
+    <!--  <ion-infinite-scroll
+        on-infinite="getMoreNotices()"
+        ng-if='hasmornotices'
+        icon="ion-loading-c"
+        spinner="ios"
+        pulling-text="Pull to refresh"
+        distance="20%">
+    </ion-content>-->
 </ion-view>
