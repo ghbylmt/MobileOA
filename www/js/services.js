@@ -112,6 +112,5 @@ angular.module('starter.services', [])
         )
       }
     }
-  })
-;
+  });
 

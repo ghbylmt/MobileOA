@@ -117,18 +117,22 @@ angular.module('starter.controllers', [])
   /**
    * 待办任务的Controller
    */
-  .controller('ProcessToDo', function ($scope) {
-
-
+  .controller('ProcessToDo', function ($cordovaInAppBrowser) {
+    /*  wind$cordovaInAppBrowserow.open('http://baidu.com', '_blank', 'location=yes,toolbar=yes,closebuttoncaption=关闭');*/
+    var options = {
+      location: 'no',
+      clearcache: 'yes',
+      toolbar: 'no'
+    };
+    $cordovaInAppBrowser.open('http://www.baidu.com', '_blank', options);
   })
   /**
    * 通知公告的Controller
    */
-  .controller('NoticesList', function ($scope, $http, Notices, $ionicLoading) {
+  .controller('NoticesList', function ($scope, $http, Notices, $ionicLoading, $ionicPopup, $timeout) {
     /**
      * 正在加载的提示
      */
-    $scope.hasMoreNotice = "加载更多..."
     $scope.show = function () {
       $ionicLoading.show({
         template: '<p>正在加载...</p><ion-spinner></ion-spinner>'
@@ -153,10 +157,19 @@ angular.module('starter.controllers', [])
           pagenum += 1;
           console.log('aaaa', $scope.notices);
           if (noticeslist.length < 10) {
-            $scope.hasMoreNotice = "全部加载完成"
+
           }
         } else {
-          $scope.hasMoreNotice = "全部加载完成"
+          var myPopup = $ionicPopup.show({
+            title: ' 已加载完成！',
+            scope: $scope,
+            buttons: []
+          });
+          myPopup.then(function (res) {
+          });
+          $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+          }, 1000);
         }
         $scope.hide();
       });
@@ -168,7 +181,8 @@ angular.module('starter.controllers', [])
       console.log('success', $scope.searchText);
     }
   })
-  .controller('NoticeDetials', function ($scope, $stateParams, Notices, NoticeDetial, $ionicLoading) {
+  .
+  controller('NoticeDetials', function ($scope, $stateParams, Notices, NoticeDetial, $ionicLoading) {
     /**
      * 正在加载的提示
      */
