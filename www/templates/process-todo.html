@@ -1,14 +1,22 @@
 <ion-view title="待办任务">
-  <ion-content>
-    <div class="card text-center row-center col-center"
-         style="background-color: #1E90FF; width: 100%;height: 200px;margin: 0 auto;">
-      <h3 class="text-center" style="  color: #ffffff; margin-top: 80px">待办任务</h3>
+  <div class="bar subheader-bar has-header">
+    <div class="row text-center">
+      <div class="col two-level-nav" ng-click="showTab('待办任务')" ng-class="{'blue':isOne}">待办任务</div>
+      <div class="col two-level-nav" ng-click="showTab('加签待办')" ng-class="{'blue':isTwo}">加签待办</div>
     </div>
-    <ion-list class="card">
-      <ion-item class="item-divider">待办任务</ion-item>
-      <ion-item class="item"></ion-item>
-      <ion-item class="item-divider">加签待办任务</ion-item>
-      <ion-item class="item"></ion-item>
-    </ion-list>
+  </div>
+  <ion-content class="has-subheader">
+    <div ng-include="'todolist.html'" ng-if="tabIndex=='待办任务'"></div>
+    <div ng-include="'signedtodolist.html'" ng-if="tabIndex=='加签待办'"></div>
+    <script type="text/ng-template" id="todolist.html">
+      <div class="list">
+        待办任务
+      </div>
+    </script>
+    <script type="text/ng-template" id="signedtodolist.html">
+      <div class="list">
+        加签待办任务
+      </div>
+    </script>
   </ion-content>
 </ion-view>

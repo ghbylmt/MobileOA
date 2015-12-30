@@ -4,6 +4,25 @@
  */
 angular.module('starter.services', [])
   /**
+   * LocalStorage的存储
+   * set 添加Object数据到LocalStorage中
+   * get 获取LocalStorage中存储的数据
+   * remove 删除LocalStorage中存储的数据
+   */
+  .factory('Storage', function () {
+    return {
+      set: function (key, data) {
+        return window.localStorage.setItem(key, window.JSON.stringify(data));
+      },
+      get: function (key) {
+        return window.JSON.parse(window.localStorage.getItem(key));
+      },
+      remove: function (key) {
+        return window.localStorage.removeItem(key);
+      }
+    }
+  })
+  /**
    * 更具人员的CID获取人员所能够阅读的通知公告的列表
    */
   .factory('Notices', function ($http) {

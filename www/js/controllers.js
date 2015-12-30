@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
     $scope.doRefresh = function () {
       $timeout(function () {
         $scope.$broadcast('scroll.refreshComplete');
-      }, 2);
+      }, 1000);//时间的单位为ms
     }
     $scope.todo_list_click = function () {
       $ionicPopup.alert({
@@ -117,14 +117,27 @@ angular.module('starter.controllers', [])
   /**
    * 待办任务的Controller
    */
-  .controller('ProcessToDo', function ($cordovaInAppBrowser) {
+  .controller('ProcessToDo', function ($scope) {
     /*  wind$cordovaInAppBrowserow.open('http://baidu.com', '_blank', 'location=yes,toolbar=yes,closebuttoncaption=关闭');*/
-    var options = {
-      location: 'no',
-      clearcache: 'yes',
-      toolbar: 'no'
+    /* var options = {
+     location: 'no',
+     clearcache: 'yes',
+     toolbar: 'no'
+     };
+     $cordovaInAppBrowser.open('http://www.baidu.com', '_blank', options);*/
+    $scope.tabIndex = "待办任务";
+    $scope.isOne = true;
+    $scope.showTab = function (tabIndex) {
+      console.log("tabIndex:" + tabIndex);
+      if (tabIndex == "待办任务") {
+        $scope.isOne = true;
+        $scope.isTwo = false;
+      } else {
+        $scope.isOne = false;
+        $scope.isTwo = true;
+      }
+      $scope.tabIndex = tabIndex;
     };
-    $cordovaInAppBrowser.open('http://www.baidu.com', '_blank', options);
   })
   /**
    * 通知公告的Controller

@@ -17,4 +17,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
+    <preference name="xwalkVersion" value="15+" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+    <preference name="xwalkMode" value="embedded" />
+    <preference name="xwalkMultipleApk" value="true" />
 </widget>
